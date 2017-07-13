@@ -42,9 +42,9 @@ var keyMirror = function(obj, prefix) {
   if (!(obj instanceof Object && !Array.isArray(obj))) {
     throw new Error('keyMirror(...): Argument must be an object.');
   }
+  prefix = prefix ? prefix + '_' : '';
   for (key in obj) {
     if (obj.hasOwnProperty(key)) {
-      prefix ? prefix + '_' : '';
       ret[prefix + key] = prefix + key;
     }
   }
