@@ -33,9 +33,10 @@
  *   Output: {key1: key1, key2: key2}
  *
  * @param {object} obj
+ * @param {prefix} str
  * @return {object}
  */
-var keyMirror = function(obj) {
+var keyMirror = function(obj, prefix) {
   var ret = {};
   var key;
   if (!(obj instanceof Object && !Array.isArray(obj))) {
@@ -43,7 +44,8 @@ var keyMirror = function(obj) {
   }
   for (key in obj) {
     if (obj.hasOwnProperty(key)) {
-      ret[key] = key;
+      prefix ? prefix + '_' : '';
+      ret[prefix + key] = prefix + key;
     }
   }
   return ret;
