@@ -45,7 +45,7 @@ var keyMirror = function(obj, prefix) {
   prefix = prefix ? prefix + '_' : '';
   for (key in obj) {
     if (obj.hasOwnProperty(key)) {
-      ret[prefix + key] = prefix + key;
+      ret[key] = prefix + key;
     }
   }
   return ret;
