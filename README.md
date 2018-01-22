@@ -1,42 +1,30 @@
-KeyMirror
+pKeyMirror
 =========
 
-Create an object with values equal to its key names.
+Create an object with values equal to its key names with/without prefix.
 
-I thought `react/lib/keyMirror` was useful and wanted to reuse it without any dependencies.
-
-This is not my code, this is property of Facebook.
+This is not my code, this is base on https://github.com/STRML/keyMirror.
 
 Why?
 ----
 
 From [this discussion](https://github.com/facebook/react/issues/1639#issuecomment-45188026):
 
+when i use redux, i have to make many const as action
 
-> The main purpose of keyMirror is to deal with the fact that Closure Compiler advanced mode crushes keys, which allows you to write code like
+this tool can make diffrent const base on prefix and object key
 
-> `keyMirror({monkey: null, gorilla: null})`
-
-> and have it become something like
-
-> `k({m:null,g:null})`
-
-> which evaluates to
-
-> `{m:"m",g:"g"}`
-
-> at runtime. If it was specified as a list of strings, they wouldn't get crushed matching the property names.
+the prefix value is related to router to make action uniq
 
 Usage
 -----
 
-`npm install keymirror`
+`npm install pkeymirror`
 
 ```javascript
-var keyMirror = require('keymirror');
-var COLORS = keyMirror({blue: null, red: null});
-var myColor = COLORS.blue;
-var isColorValid = !!COLORS[myColor];
+var keyMirror = require('pkeymirror');
+var LOGIN = keyMirror({INIT: null, SUBMIT: null},'LOGIN');
+LOGIN.INIT === 'LOGIN_INIT'
 ```
 
 The last line could not be performed if the values of the generated enum were
@@ -53,3 +41,5 @@ var _ = require('lodash');
 _.mixin({keyMirror: require('keymirror')});
 // Can now be used as _.keyMirror(object)
 ```
+
+

@@ -18,13 +18,13 @@
 "use strict";
 
 /**
- * Constructs an enumeration with keys equal to their value.
+ * Constructs an enumeration with keys equal to their value with/without prefix.
  *
  * For example:
  *
- *   var COLORS = keyMirror({blue: null, red: null});
- *   var myColor = COLORS.blue;
- *   var isColorValid = !!COLORS[myColor];
+ * var keyMirror = require('pkeymirror');
+ * var LOGIN = keyMirror({INIT: null, SUBMIT: null},'LOGIN');
+ * LOGIN.INIT === 'LOGIN_INIT'
  *
  * The last line could not be performed if the values of the generated enum were
  * not equal to their keys.
